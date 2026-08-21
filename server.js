@@ -24,6 +24,10 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files
 app.use(express.static(path.join(__dirname)));
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 /**
  * 1. API: Create Razorpay Order
  * Route: POST /api/create-order
