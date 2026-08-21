@@ -2,7 +2,6 @@
   "name": "xeliance-power-backend",
   "version": "1.0.0",
   "description": "Premium backend server with Razorpay payment processing and lookup database.",
-  "main": "server.js",
   "scripts": {
     "start-local": "node server.js",
     "dev": "node server.js"
