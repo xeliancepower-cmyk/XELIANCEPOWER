@@ -1,0 +1,2179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Xeliance Power — Win Your Dream Home</title>
+  <meta name="description"
+    content="Join India's most transparent real estate contest. Win a luxury 3BHK flat worth ₹80 Lakhs in Jaipur. Verified process, trusted company." />
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    /* ══════════════════════════════════════════
+       VIDEO HERO
+    ══════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Premium Ken-Burns Zooming Hero Background */
+    .hero-bg-zoom {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1920&q=80&auto=format&fit=crop') center center / cover no-repeat;
+      z-index: 1;
+      animation: kenBurns 40s infinite alternate ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes kenBurns {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.1);
+      }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(to bottom,
+          rgba(5, 4, 10, 0.55) 0%,
+          rgba(5, 4, 10, 0.30) 40%,
+          rgba(5, 4, 10, 0.70) 70%,
+          rgba(5, 4, 10, 1.00) 100%);
+    }
+
+    /* Gold shimmer vignette */
+    .hero-gold-vignette {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: radial-gradient(ellipse at 50% 60%, rgba(212, 160, 23, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 4;
+      text-align: center;
+      padding: 110px 24px 160px;
+      max-width: 950px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(212, 160, 23, 0.08);
+      border: 1px solid rgba(212, 160, 23, 0.4);
+      border-radius: 50px;
+      padding: 7px 20px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+      margin-bottom: 2rem;
+      animation: fadeUp 0.9s ease both;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-eyebrow .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #FF4444;
+      box-shadow: 0 0 8px rgba(255, 68, 68, 0.8);
+      animation: livePulse 1.6s infinite;
+    }
+
+    @keyframes livePulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(1.4);
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+      font-family: var(--font-serif);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.9s 0.1s ease both;
+      text-shadow: 0 4px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-title .gold-text {
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+      color: rgba(245, 245, 240, 0.80);
+      animation: fadeUp 0.9s 0.2s ease both;
+      line-height: 1.8;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.9s 0.3s ease both;
+    }
+
+    /* Floating stats bar */
+    .hero-stats-bar {
+      position: absolute;
+      bottom: 56px;
+      left: 0;
+      right: 0;
+      z-index: 4;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 0;
+      animation: fadeUp 1s 0.5s ease both;
+      pointer-events: none;
+    }
+
+    .hero-stats-bar-inner {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      background: rgba(8, 7, 14, 0.75);
+      border: 1px solid rgba(212, 160, 23, 0.3);
+      backdrop-filter: blur(16px);
+      border-radius: 60px;
+      overflow: hidden;
+      pointer-events: all;
+    }
+
+    .hero-stat-item {
+      text-align: center;
+      padding: 14px 32px;
+      position: relative;
+    }
+
+    .hero-stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 20%;
+      right: 0;
+      width: 1px;
+      height: 60%;
+      background: rgba(212, 160, 23, 0.25);
+    }
+
+    .hero-stat-num {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold-mid), var(--gold-bright));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .hero-stat-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .scroll-arrow {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .scroll-arrow span {
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid var(--gold-mid);
+      border-bottom: 2px solid var(--gold-mid);
+      transform: rotate(45deg);
+      animation: scrollBounce 1.5s infinite;
+      opacity: 0.7;
+    }
+
+    .scroll-arrow span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    @keyframes scrollBounce {
+
+      0%,
+      100% {
+        opacity: 0.2;
+        transform: rotate(45deg) translateY(0);
+      }
+
+      50% {
+        opacity: 0.9;
+        transform: rotate(45deg) translateY(6px);
+      }
+    }
+
+    /* ══════════════════════════════════════════
+       WINNER STORY BAND
+    ══════════════════════════════════════════ */
+    .winner-band {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(90deg, #0A0A0F 0%, #110E00 50%, #0A0A0F 100%);
+      border-top: 1px solid rgba(212, 160, 23, 0.15);
+      border-bottom: 1px solid rgba(212, 160, 23, 0.15);
+      padding: 64px 24px;
+    }
+
+    .winner-band-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .winner-img-wrap {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .winner-img-wrap img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+      border-radius: var(--radius-lg);
+    }
+
+    .winner-img-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(8, 7, 14, 0.85);
+      border: 1px solid rgba(212, 160, 23, 0.4);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-md);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .winner-img-badge .badge-icon {
+      font-size: 1.6rem;
+    }
+
+    .winner-img-badge .badge-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .winner-img-badge .badge-text strong {
+      display: block;
+      color: var(--gold-bright);
+      font-size: 0.88rem;
+    }
+
+
+    .winner-content .section-label {
+      margin-bottom: 0.5rem;
+    }
+
+    .winner-content h2 {
+      margin-bottom: 1rem;
+    }
+
+    .winner-content p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .winner-quote {
+      background: linear-gradient(135deg, rgba(212, 160, 23, 0.07), rgba(212, 160, 23, 0.02));
+      border-left: 3px solid var(--gold-mid);
+      padding: 1.2rem 1.5rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .winner-quote blockquote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    .winner-quote cite {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--gold-mid);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    /* ══════════════════════════════════════════
+       PRIZE SECTION
+    ══════════════════════════════════════════ */
+    .prize-section {
+      padding: 100px 24px;
+    }
+
+    .prize-section .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .grand-prize-card {
+      background: linear-gradient(135deg, #0E0C02 0%, #1A1205 50%, #0E0C02 100%);
+      border: 1px solid rgba(212, 160, 23, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(212, 160, 23, 0.08), 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .grand-prize-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 80% -20%, rgba(255, 215, 0, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 120%, rgba(184, 134, 11, 0.1) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .grand-prize-tag {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      background: linear-gradient(135deg, var(--gold-deep), var(--gold-bright));
+      color: #111;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 50px;
+    }
+
+    .grand-prize-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      border: 2px solid rgba(212, 160, 23, 0.3);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .grand-prize-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-mid);
+      margin-bottom: 0.6rem;
+    }
+
+    .grand-prize-value {
+      font-family: var(--font-serif);
+      font-size: clamp(2.5rem, 4.5vw, 4rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--gold-deep), var(--gold-bright), var(--gold-mid));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .grand-prize-detail {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.7;
+    }
+
+    .prize-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 1.8rem;
+    }
+
+    .prize-feature-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(212, 160, 23, 0.08);
+      border: 1px solid rgba(212, 160, 23, 0.2);
+      color: var(--gold-light);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 50px;
+    }
+
+    .prize-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .prize-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(212, 160, 23, 0.15);
+      border-radius: var(--radius-md);
+      text-align: center;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prize-card-img-wrap {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+
+    .prize-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.88) saturate(1.1);
+      transition: filter var(--transition), transform var(--transition);
+    }
+
+    .prize-card:hover .prize-card-img {
+      filter: brightness(1) saturate(1.25);
+      transform: scale(1.06);
+    }
+
+    .prize-card-body {
+      padding: 1.5rem 1.5rem 2rem;
+    }
+
+    .prize-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(212, 160, 23, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .prize-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212, 160, 23, 0.45);
+      box-shadow: 0 0 30px rgba(212, 160, 23, 0.2), 0 8px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .prize-rank {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .prize-amount {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold-mid), var(--gold-bright));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.3rem;
+    }
+
+    .prize-winners {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .prize-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    /* ══════════════════════════════════════════
+       TRUST BADGES ROW
+    ══════════════════════════════════════════ */
+    .trust-section {
+      padding: 60px 24px;
+      border-top: 1px solid rgba(212, 160, 23, 0.08);
+      border-bottom: 1px solid rgba(212, 160, 23, 0.08);
+    }
+
+    .trust-section .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      align-items: center;
+      text-align: center;
+    }
+
+
+    .trust-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(212, 160, 23, 0.15), rgba(212, 160, 23, 0.04));
+      border: 1px solid rgba(212, 160, 23, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.4rem;
+    }
+
+    .trust-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .trust-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ══════════════════════════════════════════
+       HOW IT WORKS
+    ══════════════════════════════════════════ */
+    .how-section {
+      padding: 100px 24px;
+      background: radial-gradient(ellipse at center, rgba(212, 160, 23, 0.05) 0%, transparent 70%);
+    }
+
+    .how-section .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 3.5rem;
+    }
+
+    .steps-connector {
+      position: absolute;
+      /* Align with top of the step number circles: heading section is ~200px, grid margin-top is 3.5rem (56px), half circle is 28px */
+      top: calc(200px + 3.5rem + 28px);
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-deep), var(--gold-bright), var(--gold-deep), transparent);
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 2.2rem 1.5rem;
+      background: var(--dark-card);
+      border: 1px solid rgba(212, 160, 23, 0.12);
+      border-radius: var(--radius-md);
+      position: relative;
+      z-index: 1;
+      transition: all var(--transition);
+    }
+
+    .step-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 30px rgba(212, 160, 23, 0.2), 0 8px 40px rgba(0, 0, 0, 0.5);
+      border-color: rgba(212, 160, 23, 0.4);
+    }
+
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-deep), var(--gold-bright));
+      color: #111;
+      font-weight: 800;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.4rem;
+      box-shadow: 0 4px 24px rgba(212, 160, 23, 0.5);
+      position: relative;
+      z-index: 2;
+    }
+
+    .step-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .step-card p {
+      font-size: 0.88rem;
+    }
+
+    /* ══════════════════════════════════════════
+       ENTRY FEE CTA
+    ══════════════════════════════════════════ */
+    .fee-section {
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    .fee-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(212, 160, 23, 0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .fee-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #0E0C02, #1A1205, #0E0C02);
+      border: 1px solid rgba(212, 160, 23, 0.4);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 60px rgba(212, 160, 23, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .fee-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(212, 160, 23, 0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .fee-amount {
+      font-family: var(--font-serif);
+      font-size: 5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--gold-deep), var(--gold-bright), var(--gold-mid));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .fee-label {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .fee-perks {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .fee-perk {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .fee-perk-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(212, 160, 23, 0.15);
+      border: 1px solid rgba(212, 160, 23, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--gold-bright);
+      flex-shrink: 0;
+    }
+
+    /* ── Tiers Grid & Cards ── */
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      text-align: left;
+    }
+
+    .tier-card {
+      background: linear-gradient(135deg, #0E0C02, #1A1205, #0E0C02);
+      border: 1px solid rgba(212, 160, 23, 0.25);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tier-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(212, 160, 23, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .tier-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(212, 160, 23, 0.6);
+      box-shadow: 0 15px 45px rgba(212, 160, 23, 0.15), 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .tier-card.featured {
+      border-color: var(--gold-mid);
+      box-shadow: 0 0 30px rgba(212, 160, 23, 0.15);
+    }
+
+    .tier-card.featured::before {
+      background: radial-gradient(ellipse at 50% 0%, rgba(212, 160, 23, 0.15) 0%, transparent 60%);
+    }
+
+    .tier-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: linear-gradient(135deg, var(--gold-deep), var(--gold-bright));
+      color: #111;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(212, 160, 23, 0.4);
+    }
+
+    .tier-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .tier-price-wrap {
+      margin-bottom: 1.5rem;
+    }
+
+    .tier-price {
+      font-family: var(--font-serif);
+      font-size: 2.75rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--gold-deep), var(--gold-bright), var(--gold-mid));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+
+    .tier-price-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .tier-perks {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+    }
+
+    .tier-perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .tier-perk-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(212, 160, 23, 0.12);
+      border: 1px solid rgba(212, 160, 23, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: var(--gold-bright);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Media query update for tier grid */
+    @media (max-width: 900px) {
+      .tier-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 2.5rem auto 0;
+        gap: 20px;
+      }
+    }
+
+    /* ══════════════════════════════════════════
+       GOLDEN ACCENT SECTION DIVIDER
+    ══════════════════════════════════════════ */
+    .gold-section-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 800px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .gold-section-divider .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 160, 23, 0.4), transparent);
+    }
+
+    .gold-section-divider .diamond {
+      width: 10px;
+      height: 10px;
+      background: var(--gold-mid);
+      transform: rotate(45deg);
+      box-shadow: 0 0 12px rgba(212, 160, 23, 0.6);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .grand-prize-card {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+      }
+
+      .prize-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps-connector {
+        display: none;
+      }
+
+      .hero-stats-bar {
+        flex-wrap: wrap;
+        border-radius: 20px;
+      }
+
+      .winner-band-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-section .inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .prize-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-section .inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stat-item {
+        padding: 10px 18px;
+      }
+
+      .fee-amount {
+        font-size: 3.5rem;
+      }
+    }
+
+    /* ══════════════════════════════════════════
+       HERO VIDEO BACKGROUND
+    ══════════════════════════════════════════ */
+    .hero-video-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    /* ══════════════════════════════════════════
+       VIDEO TOUR SECTION
+    ══════════════════════════════════════════ */
+    .video-tour-section {
+      padding: 100px 24px;
+      border-bottom: 1px solid rgba(212, 160, 23, 0.08);
+      background: radial-gradient(ellipse at 50% 50%, rgba(212, 160, 23, 0.04) 0%, transparent 80%);
+    }
+
+    .video-tour-section .inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .video-tour-wrapper {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(212, 160, 23, 0.2);
+      box-shadow: 0 0 40px rgba(212, 160, 23, 0.15), 0 20px 50px rgba(0, 0, 0, 0.8);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      background: var(--dark-surface);
+    }
+
+    .video-tour-wrapper:hover {
+      border-color: rgba(212, 160, 23, 0.4);
+      box-shadow: 0 0 50px rgba(212, 160, 23, 0.25), 0 20px 60px rgba(0, 0, 0, 0.9);
+    }
+
+    .video-container-card {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background: #000;
+    }
+
+    .video-container-card video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-play-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 15, 0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 5;
+      transition: background-color var(--transition), opacity var(--transition);
+    }
+
+    .video-play-overlay:hover {
+      background: rgba(10, 10, 15, 0.35);
+    }
+
+    .play-btn-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-deep), var(--gold-bright));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #111;
+      font-size: 2rem;
+      box-shadow: 0 0 30px var(--accent-glow);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow var(--transition);
+    }
+
+    .video-play-overlay:hover .play-btn-circle {
+      transform: scale(1.1);
+      box-shadow: 0 0 45px rgba(212, 160, 23, 0.6);
+    }
+
+    .play-btn-text {
+      margin-top: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+      font-family: var(--font-serif);
+      transition: color var(--transition);
+    }
+
+    .video-play-overlay:hover .play-btn-text {
+      color: var(--gold-bright);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Three.js global canvas -->
+  <canvas id="threejs-canvas"></canvas>
+
+  <!-- ══════════ NAVIGATION ══════════ -->
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo has-img"><img src="images/logo.png" alt="Xeliance Power Logo"></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="notice.html">Notice</a></li>
+      <li><a href="status.html">Check Status</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="status.html" class="btn btn-gold" style="padding:10px 24px;font-size:0.85rem;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle; margin-right:4px;">
+          <path d="M12 2L14.5 9.5H22L16 14L18.5 21.5L12 17L5.5 21.5L8 14L2 9.5H9.5L12 2Z" fill="currentColor"/>
+        </svg>
+        Check My Status
+      </a>
+    </div>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="terms.html">Terms</a>
+    <a href="notice.html">Notice</a>
+    <a href="status.html">Check Status</a>
+    <a href="status.html" class="btn btn-gold" style="margin-top:8px;text-align:center;">Check My Status</a>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════
+     HERO — YouTube video of family winning dream home
+════════════════════════════════════════════════════════ -->
+  <section class="hero">
+
+    <!-- Muted Auto-playing Background Video -->
+    <video class="hero-video-bg" id="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="videos/hero.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="hero-overlay"></div>
+    <div class="hero-gold-vignette"></div>
+    <canvas id="hero-canvas"></canvas>
+
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Win a <span class="gold-text">Luxury 3BHK Flat</span>
+        Worth ₹80 Lakhs
+      </h1>
+      <p class="hero-sub">India's most transparent real estate contest. Your dream home in the heart of Jaipur — one
+        lucky family's entire life changes forever.</p>
+      <div class="hero-btns">
+        <a href="#enter" class="btn btn-gold" style="font-size:1rem;padding:16px 38px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle; margin-right:6px;">
+            <path d="M12 2L14.5 9.5H22L16 14L18.5 21.5L12 17L5.5 21.5L8 14L2 9.5H9.5L12 2Z" fill="currentColor"/>
+          </svg>
+          Join the Contest
+        </a>
+        <a href="about.html" class="btn btn-outline">Learn More</a>
+      </div>
+    </div>
+
+    <!-- Floating stats bar -->
+    <div class="hero-stats-bar">
+      <div class="hero-stats-bar-inner">
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">₹80L</div>
+          <div class="hero-stat-label">Grand Prize</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">100+</div>
+          <div class="hero-stat-label">Cash Winners</div>
+        </div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-num">₹1,200</div>
+          <div class="hero-stat-label">Starting From</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-arrow">
+      <span></span><span></span>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+     TRUST BADGES
+════════════════════════════════════════════════════════ -->
+  <section class="trust-section">
+    <div class="inner">
+      <div class="trust-item fade-up">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3L2 8V21H22V8L12 3ZM7 19H5V11H7V19ZM11 19H9V11H11V19ZM15 19H13V11H15V19ZM19 19H17V11H19V19Z" fill="var(--gold-mid)"/>
+          </svg>
+        </div>
+        <div class="trust-title">Legally Registered</div>
+        <div class="trust-desc">Licensed real estate company under Indian law</div>
+      </div>
+      <div class="trust-item fade-up fade-up-delay-1">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="11" r="8" stroke="var(--gold-mid)" stroke-width="2.5"/>
+            <path d="M21 21L16.65 16.65" stroke="var(--gold-mid)" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="trust-title">100% Transparent</div>
+        <div class="trust-desc">All winners verified & published publicly</div>
+      </div>
+      <div class="trust-item fade-up fade-up-delay-2">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15 8H9L12 2Z" fill="var(--gold-mid)"/>
+            <path d="M19 6H17V11C17 13.76 14.76 16 12 16C9.24 16 7 13.76 7 11V6H5C3.9 6 3 6.9 3 8V9C3 11.21 4.79 13 7 13V15.5C7 16.83 8.08 17.91 9.4 17.91H10V20H8V22H16V20H14V17.91H14.6C15.92 17.91 17 16.83 17 15.5V13C19.21 13 21 11.21 21 9V8C21 6.9 20.1 6 19 6Z" fill="var(--gold-mid)"/>
+          </svg>
+        </div>
+        <div class="trust-title">Merit-Based Selection</div>
+        <div class="trust-desc">Evaluated by an independent expert jury</div>
+      </div>
+      <div class="trust-item fade-up fade-up-delay-3">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="11" width="18" height="11" rx="2" stroke="var(--gold-mid)" stroke-width="2"/>
+            <path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11" stroke="var(--gold-mid)" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="trust-title">Secure Payments</div>
+        <div class="trust-desc">SSL-encrypted, direct bank transfers</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+     EXCLUSIVE VIDEO TOUR
+════════════════════════════════════════════════════════ -->
+  <section class="video-tour-section">
+    <div class="inner">
+      <div class="section-center fade-up" style="margin-bottom:3rem;">
+        <p class="section-label">Exclusive Preview</p>
+        <h2>Virtual Tour of <span class="gold-text">Jai Vilas Jaipur</span></h2>
+        <div class="gold-divider"></div>
+        <p style="max-width:550px;margin:0 auto;">Take a look inside the actual luxury 3BHK flat up for grabs. Fully finished premium interiors, modular kitchen, and excellent connectivity on Sikar Road.</p>
+      </div>
+
+      <div class="video-tour-wrapper fade-up">
+        <div class="video-container-card">
+          <video id="tour-video" playsinline preload="auto">
+            <source src="videos/hero.mp4#t=0.001" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- Play button overlay -->
+          <div class="video-play-overlay" id="videoPlayOverlay">
+            <div class="play-btn-circle">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <p class="play-btn-text">Click to Play Video Tour</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════════
+     PRIZE STRUCTURE
+════════════════════════════════════════════════════════ -->
+  <section id="contest" class="prize-section">
+    <div class="inner">
+      <div class="section-center fade-up" style="margin-bottom:4rem;">
+        <p class="section-label">Prize Structure</p>
+        <h2>Win Big. <span class="gold-text">Win Your Dream.</span></h2>
+        <div class="gold-divider"></div>
+        <p style="max-width:520px;margin:0 auto;">Every participant gets a real chance — from our grand flat to 100
+          assured cash prizes. Rewards truly await.</p>
+      </div>
+
+      <!-- Grand Prize -->
+      <div class="grand-prize-card fade-up">
+        <div class="grand-prize-tag">Grand Prize</div>
+        <img src="images/grand_prize_custom.jpeg" alt="Luxury 3BHK Flat in Jaipur" class="grand-prize-image" />
+        <div>
+          <div class="grand-prize-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle; margin-right:4px;">
+              <path d="M12 2L15 8H9L12 2Z" fill="currentColor"/>
+              <path d="M19 6H17V11C17 13.76 14.76 16 12 16C9.24 16 7 13.76 7 11V6H5C3.9 6 3 6.9 3 8V9C3 11.21 4.79 13 7 13V15.5C7 16.83 8.08 17.91 9.4 17.91H10V20H8V22H16V20H14V17.91H14.6C15.92 17.91 17 16.83 17 15.5V13C19.21 13 21 11.21 21 9V8C21 6.9 20.1 6 19 6Z" fill="currentColor"/>
+            </svg>
+            1st Prize — 1 Exclusive Winner
+          </div>
+          <div class="grand-prize-value">₹80,00,000</div>
+          <h3 style="margin-bottom:0.75rem;">Luxury 3BHK Flat</h3>
+          <p class="grand-prize-detail">1365 sq.ft. fully appointed apartment at <strong>Main Sikar Road,
+              Jaipur</strong>. Premier location, luxury fittings, complete legal handover to the winner.</p>
+          <div class="prize-features">
+            <span class="prize-feature-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 10V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V10M21 10V17C21 18.1046 20.1046 19 19 19H17M21 10C19.8954 10 19 10.8954 19 12V14M3 10V17C3 18.1046 3.89543 19 5 19H7M3 10C4.10457 10 5 10.8954 5 12V14M7 19V17M7 19H17M17 19V17M7 17H17M7 17V14M17 17V14M7 14H17M7 14V12C7 10.8954 7.89543 10 9 10H15C16.1046 10 17 10.8954 17 12V14" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              3 Bedrooms
+            </span>
+            <span class="prize-feature-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 5H17M5 7H19V16C19 18.2091 17.2091 20 15 20H9C6.79086 20 5 18.2091 5 16V7ZM7 5V3H17V5" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              2 Bathrooms
+            </span>
+            <span class="prize-feature-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="3" y="11" width="18" height="7" rx="2" stroke="currentColor" stroke-width="2"/>
+                <path d="M5 11L7.5 5H16.5L19 11" stroke="currentColor" stroke-width="2"/>
+                <circle cx="7.5" cy="18" r="2" stroke="currentColor" stroke-width="2"/>
+                <circle cx="16.5" cy="18" r="2" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              Parking
+            </span>
+            <span class="prize-feature-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21C16 17 20 13.4183 20 9C20 4.58172 16.4183 1 12 1C7.58172 1 4 4.58172 4 9C4 13.4183 8 17 12 21Z" stroke="currentColor" stroke-width="2"/>
+                <circle cx="12" cy="9" r="3" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              Jaipur
+            </span>
+          </div>
+          <a href="#enter" class="btn btn-gold">Participate Now</a>
+        </div>
+      </div>
+
+      <!-- Other Prizes -->
+      <div class="prize-grid">
+
+        <!-- 2nd Prize: BMW Bike -->
+        <div class="prize-card fade-up fade-up-delay-1">
+          <div class="prize-card-img-wrap">
+            <img
+              src="images/bike_vector.png"
+              alt="BMW Motorcycle - 2nd Prize"
+              class="prize-card-img"
+            />
+          </div>
+          <div class="prize-card-body">
+            <div class="prize-rank">2nd Prize</div>
+            <div class="prize-amount">BMW Bike</div>
+            <div class="prize-winners">1 Exclusive Winner</div>
+          </div>
+        </div>
+
+        <!-- 3rd Prize: Mystery Box -->
+        <div class="prize-card fade-up fade-up-delay-2">
+          <div class="prize-card-img-wrap">
+            <img
+              src="images/mystery_box_vector.png"
+              alt="Mystery Box - 3rd Prize"
+              class="prize-card-img"
+            />
+          </div>
+          <div class="prize-card-body">
+            <div class="prize-rank">3rd Prize</div>
+            <div class="prize-amount">Mystery Box</div>
+            <div class="prize-winners">1 Exclusive Winner</div>
+            <p style="font-size: 0.72rem; color: var(--text-muted); margin-top: 6px; line-height: 1.35; text-align: left;">
+              Worth up to ₹2 Lakh! Premium jackpot (latest iPhone, Dyson Hair Dryer) and viral cosmetics from MAC, Laneige, d'Alba, & Beauty of Joseon.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4th–10th Prize: ₹51,000 Cash -->
+        <div class="prize-card fade-up fade-up-delay-3">
+          <div class="prize-card-img-wrap">
+            <img
+              src="images/cash_51k_vector.png"
+              alt="Cash Prize ₹51,000 - 4th to 10th Prize"
+              class="prize-card-img"
+            />
+          </div>
+          <div class="prize-card-body">
+            <div class="prize-rank">4th – 10th Prize</div>
+            <div class="prize-amount">₹51,000</div>
+            <div class="prize-winners">7 Winners · Cash Each</div>
+          </div>
+        </div>
+
+        <!-- 11th–100th Prize: ₹10,000 Cash -->
+        <div class="prize-card fade-up fade-up-delay-4">
+          <div class="prize-card-img-wrap">
+            <img
+              src="images/cash_10k_vector.png"
+              alt="Cash Prize ₹10,000 - 11th to 100th Prize"
+              class="prize-card-img"
+            />
+          </div>
+          <div class="prize-card-body">
+            <div class="prize-rank">11th – 100th Prize</div>
+            <div class="prize-amount">₹10,000</div>
+            <div class="prize-winners">90 Winners · Cash Each</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════════════════ -->
+  <section class="how-section">
+    <div class="inner">
+      <div class="section-center fade-up">
+        <p class="section-label">Process</p>
+        <h2>How <span class="gold-text">It Works</span></h2>
+        <div class="gold-divider"></div>
+        <p style="max-width:500px;margin:0 auto;">A simple, transparent 4-step journey to your dream home.</p>
+      </div>
+      <div class="steps-connector"></div>
+      <div class="steps-grid">
+        <div class="step-card fade-up fade-up-delay-1">
+          <div class="step-num">1</div>
+          <h3>Select Package</h3>
+          <p>Choose from the Basic, Standard, or Premium entry package tiers below.</p>
+        </div>
+        <div class="step-card fade-up fade-up-delay-2">
+          <div class="step-num">2</div>
+          <h3>Fill Details</h3>
+          <p>Submit your name, email, and phone number to create your participant slot.</p>
+        </div>
+        <div class="step-card fade-up fade-up-delay-3">
+          <div class="step-num">3</div>
+          <h3>Secure Payment</h3>
+          <p>Pay your entry fee securely via Razorpay (UPI, Cards, or Netbanking).</p>
+        </div>
+        <div class="step-card fade-up fade-up-delay-4">
+          <div class="step-num">4</div>
+          <h3>Submit your answer</h3>
+          <p>Give a solution on some major problems people are facing in the world</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+     ENTRY FEE CTA
+════════════════════════════════════════════════════════ -->
+  <section id="enter" class="fee-section">
+    <div class="inner">
+      <div class="section-center fade-up" style="margin-bottom:3rem;">
+        <p class="section-label">Participation Options</p>
+        <h2>Select Your <span class="gold-text">Entry Package</span></h2>
+        <div class="gold-divider"></div>
+        <p style="max-width:500px;margin:0 auto;">Choose the tier that suits you best. Every package registers you for the grand draw and all available prizes!</p>
+      </div>
+
+      <div class="tier-grid">
+        <!-- Basic Option -->
+        <div class="tier-card fade-up">
+          <div>
+            <div class="tier-title">Basic Entry</div>
+            <div class="tier-price-wrap">
+              <span class="tier-price">₹1,200</span>
+              <div class="tier-price-sub">One-time payment · Non-refundable</div>
+            </div>
+            <ul class="tier-perks">
+              <li class="tier-perk">
+                <span class="tier-perk-icon">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Chance to win any of the prizes (Flat, BMW Bike, Mystery Box, Cash Prizes)
+              </li>
+              <li class="tier-perk">
+                <span class="tier-perk-icon">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Verified, legally compliant process
+              </li>
+              <li class="tier-perk">
+                <span class="tier-perk-icon">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                100% transparent evaluation & public results
+              </li>
+            </ul>
+          </div>
+          <button onclick="openModalWithTier(1200, 'Basic Entry')" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:auto;">Select Basic Tier</button>
+        </div>
+
+        <!-- Standard Option -->
+        <div class="tier-card fade-up featured">
+          <div class="tier-badge">Guaranteed Benefit</div>
+          <div>
+            <div class="tier-title" style="color: var(--gold-bright);">Standard Entry</div>
+            <div class="tier-price-wrap">
+              <span class="tier-price">₹2,000</span>
+              <div class="tier-price-sub">One-time payment · Non-refundable</div>
+            </div>
+            <ul class="tier-perks">
+              <li class="tier-perk" style="color: #fff; font-weight: 500;">
+                <span class="tier-perk-icon" style="background: rgba(212, 160, 23, 0.25);">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Guaranteed Cashback included
+              </li>
+              <li class="tier-perk">
+                <span class="tier-perk-icon">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Chance to win any of the prizes (Flat, BMW Bike, Mystery Box, Cash Prizes)
+              </li>
+              <li class="tier-perk">
+                <span class="tier-perk-icon">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Verified, legally compliant process & transparent evaluation
+              </li>
+            </ul>
+          </div>
+          <button onclick="openModalWithTier(2000, 'Standard Entry')" class="btn btn-gold" style="width:100%;justify-content:center;margin-top:auto;">Select Standard Tier</button>
+        </div>
+
+        <!-- Premium Option -->
+        <div class="tier-card fade-up">
+          <div class="tier-badge">Drawing Pack</div>
+          <div>
+            <div class="tier-title">Premium Entry</div>
+            <div class="tier-price-wrap">
+              <span class="tier-price">₹3,000</span>
+              <div class="tier-price-sub">One-time payment · Non-refundable</div>
+            </div>
+            <ul class="tier-perks">
+              <li class="tier-perk" style="color: #fff; font-weight: 500;">
+                <span class="tier-perk-icon" style="background: rgba(212, 160, 23, 0.25);">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Includes your residential plan and interior layout
+              </li>
+              <li class="tier-perk">
+                <span class="tier-perk-icon">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Chance to win any of the prizes (Flat, BMW Bike, Mystery Box, Cash Prizes)
+              </li>
+              <li class="tier-perk">
+                <span class="tier-perk-icon">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Verified, legally compliant process & transparent evaluation
+              </li>
+            </ul>
+          </div>
+          <button onclick="openModalWithTier(3000, 'Premium Entry')" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:auto;">Select Premium Tier</button>
+        </div>
+      </div>
+
+      <p style="font-size:0.78rem;color:var(--text-muted);margin-top:2.5rem;text-align:center;">By participating, you agree to our <a
+          href="policy.html">Privacy Policy</a> and <a href="terms.html">Terms & Conditions</a>.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="nav-logo has-img" style="font-size:1.5rem;"><img src="images/logo.png" alt="Xeliance Power Logo" style="height: 38px;"></div>
+        <p>A trusted licensed real estate company empowering families to own their dream homes through fair, transparent
+          contests.</p>
+        <p style="margin-top:1rem;font-size:0.85rem;"><a
+            href="mailto:Xeliancepower@gmail.com">Xeliancepower@gmail.com</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="notice.html">Notice</a></li>
+          <li><a href="status.html">Check Status</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Xeliance Power. All rights reserved. Licensed Real Estate Company.</span>
+
+    </div>
+  </footer>
+
+  <!-- ══════════ REGISTRATION MODAL ══════════ -->
+  <div id="paymentModal" class="payment-modal">
+    <div class="payment-modal-content fade-in-scale">
+      <button class="payment-modal-close" id="closePaymentModal">&times;</button>
+      <div class="payment-modal-header">
+        <h2>Contest <span class="gold-text">Registration</span></h2>
+        <p id="modal-payment-desc">Submit your details and complete the ₹2,000 fee payment to secure your entry.</p>
+      </div>
+      <form id="contestForm">
+        <!-- Step 1: Registration Form -->
+        <div id="step-registration-container">
+          <div class="form-group-row">
+            <div class="form-group">
+              <label for="reg-name">Full Name *</label>
+              <input type="text" id="reg-name" placeholder="Enter your full name" required>
+            </div>
+          </div>
+          <div class="form-group-row">
+            <div class="form-group">
+              <label for="reg-email">Email Address *</label>
+              <input type="email" id="reg-email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="reg-phone">Phone Number *</label>
+              <input type="tel" id="reg-phone" placeholder="10-digit mobile number" required>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:1.5rem;">
+            <label for="reg-tier">Selected Entry Package *</label>
+            <select id="reg-tier" style="width:100%; padding:14px; background:#110f08; border:1px solid rgba(212,160,23,0.3); border-radius:6px; color:#fff; font-size:0.95rem; font-family:inherit; outline:none; transition:border-color 0.2s;" required>
+              <option value="1200">Basic Entry — ₹1,200 (Chance to win all prizes)</option>
+              <option value="2000" selected>Standard Entry — ₹2,000 (Guaranteed Cashback + chance to win all prizes)</option>
+              <option value="3000">Premium Entry — ₹3,000 (House Drawings + chance to win all prizes)</option>
+            </select>
+          </div>
+          <div class="payment-terms-checkbox">
+            <input type="checkbox" id="reg-agree" required>
+            <label for="reg-agree">I agree to the <a href="terms.html" target="_blank">Terms & Conditions</a> and confirm that all details are accurate.</label>
+          </div>
+          <div id="lookup-info-message" style="display:none; margin: 15px 0; padding: 12px; border: 1px solid rgba(76, 175, 80, 0.3); border-radius: 6px; background: rgba(76, 175, 80, 0.05); color: #4caf50; font-size: 0.85rem; line-height: 1.4; text-align: left;"></div>
+          
+          <button type="submit" class="btn btn-gold btn-pay-now" style="width:100%;justify-content:center;font-size:1.05rem;margin-top:10px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px;">
+              <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2.5"/>
+              <path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11" stroke="currentColor" stroke-width="2.5"/>
+            </svg>
+            <span id="btn-pay-text">Pay ₹2,000 & Register</span>
+          </button>
+        </div>
+
+        <!-- Step 2: Environmental Strategy (Shown after payment) -->
+        <div id="step-question-container" style="display: none;">
+          <div class="modal-status-msg success" style="display: block; margin-bottom: 20px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px;stroke:#4ade80;">
+              <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <strong>Payment Verified!</strong> Reference ID: <span id="verified-payment-id" style="font-family:monospace;font-weight:bold;"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-solution" style="font-size: 1rem; color: var(--gold-bright); margin-bottom: 12px; line-height: 1.4;">
+              Contest Skill Challenge
+            </label>
+            
+            <p style="color: var(--text-primary); font-size: 0.92rem; line-height: 1.6; margin-bottom: 18px;">
+              As you know, our cities are expanding rapidly with new high-rises and concrete infrastructure. On average, urban green spaces are shrinking, leading to hotter summer temperatures (heat islands) and less room for nature. <strong>Suggest a realistic, creative way communities or individuals can bring green spaces back into dense urban neighborhoods to cool our cities down.</strong> (Max 300 words)
+            </p>
+
+            <div class="rules-box">
+              <div class="rules-box-title">Submission Format & Rules</div>
+              <ul class="rules-list">
+                <li><strong>Paragraph 1 (approx. 120 words):</strong> Describe your core idea or innovation.</li>
+                <li><strong>Paragraph 2 (approx. 100 words):</strong> Explain how it practically works in daily life.</li>
+                <li><strong>Paragraph 3 (approx. 80 words):</strong> Outline the direct impact it creates.</li>
+              </ul>
+              <div class="ai-note">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="stroke: currentColor; stroke-width: 2.5; vertical-align: middle; flex-shrink: 0;">
+                  <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Note: Do not use AI, as we can do better than you! (Human creativity is key).</span>
+              </div>
+            </div>
+
+            <textarea id="reg-solution" placeholder="Write your 3-paragraph strategy here..." rows="8" style="width: 100%; font-family: inherit; font-size: 0.95rem; line-height: 1.6; padding: 14px; background: rgba(0,0,0,0.25); border: 1px solid rgba(212,160,23,0.3); border-radius: 6px; color: #fff; outline: none; transition: border-color 0.2s;" oninput="updateWordCount()"></textarea>
+            <div id="wordCountLabel" class="word-counter">0 / 300 words</div>
+          </div>
+
+          <button type="button" id="btnSubmitQuestion" class="btn btn-gold" style="width:100%;justify-content:center;font-size:1.05rem;margin-top:10px;">
+            Complete Contest Submission
+          </button>
+        </div>
+
+        <!-- Error / Status message inside modal -->
+        <div id="modalMsg" class="modal-status-msg"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══════ SCRIPTS ══════ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    /* ── Hero Golden Orbs (Three.js) ── */
+    (function initHeroOrbs() {
+      const canvas = document.getElementById('hero-canvas');
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+      const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      camera.position.z = 5;
+
+      const orbs = [];
+      const goldPalette = [0xD4A017, 0xFFD700, 0xB8860B, 0xFFF1A8, 0xFFE05C];
+      for (let i = 0; i < 22; i++) {
+        const r = Math.random() * 0.22 + 0.04;
+        const geo = new THREE.SphereGeometry(r, 16, 16);
+        const mat = new THREE.MeshBasicMaterial({
+          color: goldPalette[i % goldPalette.length],
+          transparent: true,
+          opacity: Math.random() * 0.25 + 0.06
+        });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.position.set(
+          (Math.random() - 0.5) * 9,
+          (Math.random() - 0.5) * 5.5,
+          (Math.random() - 0.5) * 3
+        );
+        mesh.userData.speed = Math.random() * 0.35 + 0.15;
+        mesh.userData.offset = Math.random() * Math.PI * 2;
+        scene.add(mesh);
+        orbs.push(mesh);
+      }
+
+      const clock = new THREE.Clock();
+      function animate() {
+        requestAnimationFrame(animate);
+        const t = clock.getElapsedTime();
+        orbs.forEach(o => {
+          o.position.y += Math.sin(t * o.userData.speed + o.userData.offset) * 0.004;
+          o.position.x += Math.cos(t * o.userData.speed * 0.6 + o.userData.offset) * 0.002;
+        });
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    })();
+
+
+
+    /* ── Hero Video Handler Removed to avoid unavailable error screens ── */
+
+    /* ── Razorpay Payment & Modal Integration ── */
+    const paymentModal = document.getElementById('paymentModal');
+    const closePaymentModalBtn = document.getElementById('closePaymentModal');
+    const contestForm = document.getElementById('contestForm');
+    const modalMsg = document.getElementById('modalMsg');
+
+    const regTierSelect = document.getElementById('reg-tier');
+    const payBtnText = document.getElementById('btn-pay-text');
+    const payDescription = document.getElementById('modal-payment-desc');
+
+    function updatePayButtonText() {
+      if (!regTierSelect || !payBtnText || !payDescription) return;
+      const selectedAmount = Number(regTierSelect.value);
+      const formattedAmount = selectedAmount.toLocaleString('en-IN');
+      payBtnText.textContent = `Pay ₹${formattedAmount} & Register`;
+      payDescription.textContent = `Submit your details and complete the ₹${formattedAmount} fee payment to secure your entry.`;
+    }
+
+    if (regTierSelect) {
+      regTierSelect.addEventListener('change', updatePayButtonText);
+    }
+
+    function openModal() {
+      paymentModal.classList.add('open');
+      document.body.style.overflow = 'hidden'; // Disable background scroll
+    }
+
+    function openModalWithTier(amount, name) {
+      openModal();
+      if (regTierSelect) {
+        regTierSelect.value = amount;
+        updatePayButtonText();
+      }
+    }
+
+    function closeModal() {
+      paymentModal.classList.remove('open');
+      document.body.style.overflow = 'auto'; // Re-enable scroll
+      contestForm.reset();
+      modalMsg.style.display = 'none';
+
+      // Reset Form Steps
+      document.getElementById('step-registration-container').style.display = 'block';
+      document.getElementById('step-question-container').style.display = 'none';
+
+      // Reset field validators
+      document.getElementById('reg-name').required = true;
+      document.getElementById('reg-email').required = true;
+      document.getElementById('reg-phone').required = true;
+      document.getElementById('reg-agree').required = true;
+      document.getElementById('reg-solution').required = false;
+
+      // Reset word counter UI
+      const wcEl = document.getElementById('wordCountLabel');
+      if (wcEl) {
+        wcEl.textContent = '0 / 300 words';
+        wcEl.classList.remove('limit-exceeded');
+      }
+
+      updatePayButtonText();
+      if (typeof clearExistingEntryUI === 'function') {
+        clearExistingEntryUI();
+      }
+
+      paymentDetails = null;
+      userDetails = {};
+    }
+
+    function updateWordCount() {
+      const solution = document.getElementById('reg-solution').value.trim();
+      const count = solution ? solution.split(/\s+/).filter(Boolean).length : 0;
+      const wcEl = document.getElementById('wordCountLabel');
+      if (wcEl) {
+        wcEl.textContent = `${count} / 300 words`;
+        if (count > 300) {
+          wcEl.classList.add('limit-exceeded');
+        } else {
+          wcEl.classList.remove('limit-exceeded');
+        }
+      }
+    }
+
+    if (closePaymentModalBtn) {
+      closePaymentModalBtn.addEventListener('click', closeModal);
+    }
+
+    // Close when clicking overlay
+    paymentModal.addEventListener('click', (e) => {
+      if (e.target === paymentModal) {
+        closeModal();
+      }
+    });
+
+    let paymentDetails = null; // Memory container for checkout response tokens
+    let userDetails = {}; // Temporary cache for registration details
+
+    function getApiUrl(path) {
+      const base = (window.location.protocol === 'file:') ? 'http://localhost:8086' : '';
+      return `${base}${path}`;
+    }
+
+    let existingEntryFound = false;
+
+    async function performLookup() {
+      const email = document.getElementById('reg-email').value.trim();
+      const phone = document.getElementById('reg-phone').value.trim();
+      
+      const hasEmail = email && email.includes('@');
+      const hasPhone = phone && phone.replace(/[^0-9]/g, '').length >= 8;
+
+      if (!hasEmail && !hasPhone) {
+        clearExistingEntryUI();
+        return;
+      }
+
+      try {
+        const query = [];
+        if (hasEmail) query.push(`email=${encodeURIComponent(email)}`);
+        if (hasPhone) query.push(`phone=${encodeURIComponent(phone)}`);
+        
+        const response = await fetch(getApiUrl(`/api/check-status?${query.join('&')}`));
+        const data = await response.json();
+
+        if (data.success && data.found) {
+          existingEntryFound = true;
+          if (data.entry.name) {
+            document.getElementById('reg-name').value = data.entry.name;
+          }
+          if (data.entry.email && !email) {
+            document.getElementById('reg-email').value = data.entry.email;
+          }
+          if (data.entry.phone && !phone) {
+            document.getElementById('reg-phone').value = data.entry.phone;
+          }
+          
+          const msgContainer = document.getElementById('lookup-info-message');
+          if (msgContainer) {
+            msgContainer.innerHTML = `
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle; margin-right:6px; color:#4caf50;">
+                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <strong>We found your previous entry!</strong> You have already registered for this contest. Click below to verify your entry status.
+            `;
+            msgContainer.style.display = 'block';
+          }
+
+          document.getElementById('reg-agree').checked = true;
+          document.getElementById('reg-agree').disabled = true;
+
+          const btnText = document.getElementById('btn-pay-text');
+          if (btnText) btnText.textContent = "View My Entry Status";
+        } else {
+          clearExistingEntryUI();
+        }
+      } catch (err) {
+        console.error("Autofill lookup error:", err);
+      }
+    }
+
+    function clearExistingEntryUI() {
+      if (!existingEntryFound) return;
+      existingEntryFound = false;
+      const msgContainer = document.getElementById('lookup-info-message');
+      if (msgContainer) {
+        msgContainer.style.display = 'none';
+      }
+      document.getElementById('reg-agree').disabled = false;
+      updatePayButtonText();
+    }
+
+    // Attach listeners for autofill lookup
+    document.getElementById('reg-email').addEventListener('blur', performLookup);
+    document.getElementById('reg-phone').addEventListener('blur', performLookup);
+    document.getElementById('reg-email').addEventListener('change', performLookup);
+    document.getElementById('reg-phone').addEventListener('change', performLookup);
+
+    // Form submission flow (Step 1: Registration and Payment Checkout Initiation)
+    contestForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (existingEntryFound) {
+        const email = document.getElementById('reg-email').value.trim();
+        const phone = document.getElementById('reg-phone').value.trim();
+        closeModal();
+        window.location.href = `status.html?email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}`;
+        return;
+      }
+
+      const selectedTierElement = document.getElementById('reg-tier');
+      const selectedAmount = Number(selectedTierElement.value);
+      const selectedTierName = selectedTierElement.options[selectedTierElement.selectedIndex].text.split('—')[0].trim();
+
+      userDetails.name = document.getElementById('reg-name').value.trim();
+      userDetails.email = document.getElementById('reg-email').value.trim();
+      userDetails.phone = document.getElementById('reg-phone').value.trim();
+      userDetails.amount = selectedAmount;
+      userDetails.tier = selectedTierName;
+
+      modalMsg.className = 'modal-status-msg info';
+      modalMsg.textContent = 'Initiating checkout... Please do not close this window.';
+      modalMsg.style.display = 'block';
+
+      try {
+        // 1. Create order on the backend
+        const orderResponse = await fetch(getApiUrl('/api/create-order'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ amount: userDetails.amount })
+        });
+        const orderData = await orderResponse.json();
+
+        if (!orderData.success) {
+          throw new Error(orderData.error || 'Failed to initialize order.');
+        }
+
+        // 2. Configure Razorpay Options
+        const options = {
+          key: 'rzp_live_SrGHxE8Hs4EROH', // Live Key ID
+          amount: orderData.amount,
+          currency: orderData.currency,
+          name: 'Xeliance Power',
+          description: `Contest Entry Fee — ${userDetails.tier} (₹${Number(userDetails.amount).toLocaleString('en-IN')})`,
+          image: 'images/logo.png',
+          order_id: orderData.order_id,
+          handler: function (response) {
+            try {
+              console.log("Razorpay payment response received:", response);
+              if (!response || !response.razorpay_payment_id) {
+                throw new Error("Invalid payment response structure from Razorpay.");
+              }
+
+              // Save payment details inside global closure memory
+              paymentDetails = {
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature
+              };
+
+              // Transition Form to Step 2: The Environmental Strategy Question!
+              const stepReg = document.getElementById('step-registration-container');
+              const stepQuest = document.getElementById('step-question-container');
+              const refIdEl = document.getElementById('verified-payment-id');
+
+              if (stepReg && stepQuest && refIdEl) {
+                stepReg.style.display = 'none';
+                refIdEl.textContent = response.razorpay_payment_id;
+
+                // Adjust form validation attributes so they don't block Step 2
+                document.getElementById('reg-name').required = false;
+                document.getElementById('reg-email').required = false;
+                document.getElementById('reg-phone').required = false;
+                document.getElementById('reg-agree').required = false;
+                document.getElementById('reg-solution').required = true;
+
+                stepQuest.style.display = 'block';
+                modalMsg.style.display = 'none';
+                console.log("Form successfully transitioned to Step 2.");
+              } else {
+                throw new Error("Form step containers or ref ID elements not found in DOM.");
+              }
+            } catch (err) {
+              console.error("Transition to Step 2 failed:", err);
+              alert("Payment was successful (ID: " + (response ? response.razorpay_payment_id : "unknown") + "), but failed to load the strategy form. Error: " + err.message);
+            }
+          },
+          prefill: {
+            name: userDetails.name,
+            email: userDetails.email,
+            contact: userDetails.phone
+          },
+          theme: {
+            color: '#D4A017' // Premium Gold Accent
+          }
+        };
+
+        const rzp = new Razorpay(options);
+        rzp.on('payment.failed', function (response) {
+          modalMsg.className = 'modal-status-msg error';
+          modalMsg.textContent = 'Payment failed: ' + response.error.description;
+        });
+        
+        rzp.open();
+      } catch (err) {
+        modalMsg.className = 'modal-status-msg error';
+        modalMsg.textContent = err.message || 'Failed to start transaction. Please try again.';
+      }
+    });
+
+    // Step 2 Submission Handler (Final submission after typing Solution Strategy)
+    document.getElementById('btnSubmitQuestion').addEventListener('click', async () => {
+      const solution = document.getElementById('reg-solution').value.trim();
+
+      // Word count validation (Min 30, Max 300 words)
+      const wordCount = solution.split(/\s+/).filter(Boolean).length;
+      if (wordCount === 0) {
+        modalMsg.className = 'modal-status-msg error';
+        modalMsg.textContent = 'Please enter your environmental strategy solution.';
+        modalMsg.style.display = 'block';
+        return;
+      }
+      if (wordCount < 30) {
+        modalMsg.className = 'modal-status-msg error';
+        modalMsg.textContent = `Your strategy must be at least 30 words. Currently: ${wordCount} words.`;
+        modalMsg.style.display = 'block';
+        return;
+      }
+      if (wordCount > 300) {
+        modalMsg.className = 'modal-status-msg error';
+        modalMsg.textContent = `Your strategy must not exceed 300 words. Currently: ${wordCount} words.`;
+        modalMsg.style.display = 'block';
+        return;
+      }
+
+      if (!paymentDetails) {
+        modalMsg.className = 'modal-status-msg error';
+        modalMsg.textContent = 'Verified payment session not found. Please try again.';
+        modalMsg.style.display = 'block';
+        return;
+      }
+
+      modalMsg.className = 'modal-status-msg info';
+      modalMsg.textContent = 'Verifying signature and saving contest registration...';
+      modalMsg.style.display = 'block';
+
+      try {
+        const verifyResponse = await fetch(getApiUrl('/api/verify-payment'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: userDetails.name,
+            email: userDetails.email,
+            phone: userDetails.phone,
+            solution: solution,
+            amount: userDetails.amount,
+            tier: userDetails.tier,
+            razorpay_order_id: paymentDetails.razorpay_order_id,
+            razorpay_payment_id: paymentDetails.razorpay_payment_id,
+            razorpay_signature: paymentDetails.razorpay_signature
+          })
+        });
+        const verifyData = await verifyResponse.json();
+
+        if (verifyData.success) {
+          modalMsg.className = 'modal-status-msg success';
+          modalMsg.innerHTML = `
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:6px;">
+              <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <strong>Registration Completed!</strong><br>
+            Transaction ID: ${verifyData.payment_id}<br>
+            Your entry has been securely registered in the cloud. Redirecting...
+          `;
+          setTimeout(() => {
+            const email = userDetails.email;
+            const phone = userDetails.phone;
+            closeModal();
+            window.location.href = `status.html?email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}`;
+          }, 4000);
+        } else {
+          throw new Error(verifyData.error || 'Signature verification failed.');
+        }
+      } catch (verifyErr) {
+        console.error("Signature verification / DB save failed:", verifyErr);
+        modalMsg.className = 'modal-status-msg error';
+        modalMsg.textContent = verifyErr.message || 'Payment verification failed.';
+        modalMsg.style.display = 'block';
+        alert("Payment verification failed. Error: " + verifyErr.message);
+      }
+    });
+
+    // ── Video Elements Control Scripting ──
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Hero background video fade-in
+      // 1. Hero background video autoplay force (especially for mobile)
+      const heroVid = document.getElementById('hero-video');
+      if (heroVid) {
+        // Try playing immediately
+        heroVid.play().catch(e => {
+          console.warn("Hero video autoplay blocked on load, waiting for interaction:", e);
+        });
+
+        // Force play on first touch or click
+        const forcePlay = () => {
+          heroVid.play().catch(e => console.log("Force play failed:", e));
+          document.removeEventListener('touchstart', forcePlay);
+          document.removeEventListener('click', forcePlay);
+        };
+        document.addEventListener('touchstart', forcePlay, { passive: true });
+        document.addEventListener('click', forcePlay);
+      }
+
+      // 2. Interactive Video Tour controls
+      const tourVideo = document.getElementById('tour-video');
+      const videoPlayOverlay = document.getElementById('videoPlayOverlay');
+      if (tourVideo && videoPlayOverlay) {
+        videoPlayOverlay.addEventListener('click', () => {
+          tourVideo.play();
+          tourVideo.controls = true;
+          videoPlayOverlay.style.opacity = '0';
+          setTimeout(() => {
+            videoPlayOverlay.style.display = 'none';
+          }, 400); // matches the transition duration
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
